@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plantillas de Stories — Creaciones LuFran</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #c4a082;
+    --rose-light: #e8d5c4;
+    --rose-pale: #faf6f2;
+    --rose-deep: #8b6f5a;
+    --charcoal: #2d2926;
+    --warm-gray: #6b6462;
+    --cream: #fffcf9;
+    --sage: #a8b5a0;
+    --sage-light: #e8ede5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: #f0ece8;
+    color: var(--charcoal);
+    padding: 2rem;
+  }
+
+  h1 {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--warm-gray);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .templates-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .template-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .template-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rose-deep);
+    background: var(--rose-pale);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+  }
+
+  .template-use {
+    font-size: 0.78rem;
+    color: var(--warm-gray);
+    max-width: 230px;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* Story frame: 1080x1920 ratio = 9:16, scaled down */
+  .story {
+    width: 270px;
+    height: 480px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(45, 41, 38, 0.12);
+    flex-shrink: 0;
+  }
+
+  /* ─── TEMPLATE 1: NUEVO PRODUCTO ─── */
+  .story-1 {
+    background: linear-gradient(170deg, var(--rose-pale) 0%, var(--rose-light) 60%, var(--rose) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .story-1 .s-tag {
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose-deep);
+    background: rgba(255,255,255,0.6);
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    margin-bottom: 2rem;
+  }
+
+  .story-1 .s-emoji {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .story-1 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  .story-1 h2 em { font-style: italic; color: var(--rose-deep); }
+
+  .story-1 .s-desc {
+    font-size: 0.72rem;
+    color: var(--warm-gray);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .story-1 .s-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+  }
+
+  .story-1 .s-cta {
+    background: var(--charcoal);
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .story-1 .s-brand {
+    position: absolute;
+    bottom: 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem;
+    font-style: italic;
+    color: var(--rose-deep);
+    opacity: 0.6;
+  }
+
+  /* ─── TEMPLATE 2: TESTIMONIO ─── */
+  .story-2 {
+    background: var(--charcoal);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .story-2 .s-quote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    color: var(--rose);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .story-2 .s-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .story-2 .s-line {
+    width: 40px;
+    height: 1px;
+    background: var(--rose);
+    margin: 0 auto 1rem;
+  }
+
+  .story-2 .s-author {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--rose-light);
+    letter-spacing: 0.1em;
+  }
+
+  .story-2 .s-stars {
+    color: var(--rose);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.15em;
+  }
+
+  .story-2 .s-tag-bottom {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.55rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* ─── TEMPLATE 3: PROMO / DESCUENTO ─── */
+  .story-3 {
+    background: linear-gradient(160deg, #2d2926 0%, #4a3f3a 50%, #8b6f5a 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .story-3::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -30%;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(196,160,130,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .story-3 .s-badge {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 2px solid var(--rose);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .story-3 .s-badge-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--rose);
+    line-height: 1;
+  }
+
+  .story-3 .s-badge-text {
+    font-size: 0.55rem;
+    font-weight: 500;
+    color: var(--rose-light);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .story-3 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: white;
+    line-height: 1.3;
+    margin-bottom: 0.6rem;
+  }
+
+  .story-3 .s-detail {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+
+  .story-3 .s-cta {
+    background: var(--rose);
+    color: white;
+    padding: 0.6rem 1.8rem;
+    border-radius: 50px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .story-3 .s-timer {
+    position: absolute;
+    bottom: 1.5rem;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── TEMPLATE 4: PREGUNTA / ENCUESTA ─── */
+  .story-4 {
+    background: var(--sage-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .story-4 .s-emoji { font-size: 2.5rem; margin-bottom: 1.2rem; }
+
+  .story-4 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    line-height: 1.3;
+    margin-bottom: 1.8rem;
+  }
+
+  .story-4 .s-option {
+    background: white;
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    color: var(--charcoal);
+    border: 1px solid rgba(168,181,160,0.3);
+    transition: all 0.2s;
+  }
+
+  .story-4 .s-option-emoji { font-size: 1.2rem; }
+
+  .story-4 .s-hint {
+    font-size: 0.6rem;
+    color: var(--warm-gray);
+    margin-top: 1.2rem;
+    opacity: 0.6;
+  }
+
+  /* ─── TEMPLATE 5: PROCESO / BEHIND THE SCENES ─── */
+  .story-5 {
+    background: var(--rose-pale);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    position: relative;
+  }
+
+  .story-5 .s-header {
+    margin-bottom: auto;
+  }
+
+  .story-5 .s-tag {
+    font-size: 0.5rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose-deep);
+    margin-bottom: 0.5rem;
+  }
+
+  .story-5 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    line-height: 1.2;
+  }
+
+  .story-5 .s-placeholder {
+    background: var(--rose-light);
+    border-radius: 12px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+    border: 2px dashed var(--rose);
+    opacity: 0.5;
+  }
+
+  .story-5 .s-placeholder span {
+    font-size: 0.65rem;
+    color: var(--rose-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .story-5 .s-steps {
+    margin-top: auto;
+  }
+
+  .story-5 .s-step {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .story-5 .s-step-num {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border-radius: 50%;
+    background: var(--rose);
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .story-5 .s-step span {
+    font-size: 0.7rem;
+    color: var(--warm-gray);
+  }
+
+  /* ─── TEMPLATE 6: FECHA ESPECIAL ─── */
+  .story-6 {
+    background: linear-gradient(170deg, #fde8ef 0%, #f5d5e0 40%, #e8c8d8 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .story-6 .s-date {
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #d4517d;
+    margin-bottom: 1.5rem;
+  }
+
+  .story-6 .s-emoji { font-size: 3rem; margin-bottom: 1rem; }
+
+  .story-6 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+  }
+
+  .story-6 h2 em { font-style: italic; color: #d4517d; }
+
+  .story-6 .s-desc {
+    font-size: 0.72rem;
+    color: var(--warm-gray);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .story-6 .s-gift-list {
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+
+  .story-6 .s-gift {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.7rem;
+    color: var(--charcoal);
+  }
+
+  .story-6 .s-gift-dot {
+    width: 5px; height: 5px;
+    background: #d4517d;
+    border-radius: 50%;
+    min-width: 5px;
+  }
+
+  .story-6 .s-cta {
+    background: #d4517d;
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ─── INSTRUCTIONS ─── */
+  .instructions {
+    max-width: 700px;
+    margin: 4rem auto 2rem;
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(45,41,38,0.06);
+  }
+
+  .instructions h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+    color: var(--charcoal);
+  }
+
+  .instructions p {
+    font-size: 0.88rem;
+    color: var(--warm-gray);
+    margin-bottom: 0.8rem;
+    line-height: 1.7;
+  }
+
+  .instructions strong { color: var(--charcoal); }
+
+  @media (max-width: 768px) {
+    body { padding: 1rem; }
+    .templates-grid { gap: 1.5rem; }
+    .story { width: 240px; height: 426px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Plantillas de Stories</h1>
+<p class="subtitle">6 plantillas listas para usar en Instagram Stories. Hacé captura de pantalla o recrealas en CapCut/Canva con tus propias fotos.</p>
+
+<div class="templates-grid">
+
+  <!-- Template 1: Nuevo Producto -->
+  <div class="template-wrapper">
+    <span class="template-label">Producto nuevo</span>
+    <div class="story story-1">
+      <span class="s-tag">Nuevo en LuFran</span>
+      <span class="s-emoji">✨</span>
+      <h2>Kit <em>Beauty</em></h2>
+      <p class="s-desc">Pads reutilizables + vincha + bolsita de tela. Todo hecho a mano.</p>
+      <span class="s-price">$7.000</span>
+      <span class="s-cta">Pedilo por WhatsApp</span>
+      <span class="s-brand">LuFran</span>
+    </div>
+    <p class="template-use">Para mostrar un producto con precio y descripción</p>
+  </div>
+
+  <!-- Template 2: Testimonio -->
+  <div class="template-wrapper">
+    <span class="template-label">Testimonio</span>
+    <div class="story story-2">
+      <div class="s-stars">★ ★ ★ ★ ★</div>
+      <span class="s-quote-mark">"</span>
+      <p class="s-quote">Me encantó el kit, la calidad es increíble y llegó hermosamente empaquetado. Ya lo recomendé a todas mis amigas.</p>
+      <div class="s-line"></div>
+      <span class="s-author">— María L., Mendoza</span>
+      <span class="s-tag-bottom">Creaciones LuFran</span>
+    </div>
+    <p class="template-use">Para compartir opiniones de clientas contentas</p>
+  </div>
+
+  <!-- Template 3: Promo -->
+  <div class="template-wrapper">
+    <span class="template-label">Promo / Descuento</span>
+    <div class="story story-3">
+      <div class="s-badge">
+        <span class="s-badge-num">15%</span>
+        <span class="s-badge-text">OFF</span>
+      </div>
+      <h2>Promo Otoño</h2>
+      <p class="s-detail">Kit Beauty + Kit de Dormir<br>Solo esta semana</p>
+      <span class="s-cta">Escribime ahora</span>
+      <span class="s-timer">Válido hasta el domingo</span>
+    </div>
+    <p class="template-use">Para anunciar descuentos y ofertas especiales</p>
+  </div>
+
+  <!-- Template 4: Encuesta -->
+  <div class="template-wrapper">
+    <span class="template-label">Encuesta / Interacción</span>
+    <div class="story story-4">
+      <span class="s-emoji">🎨</span>
+      <h2>¿Qué color querés para el próximo kit?</h2>
+      <div class="s-option">
+        <span class="s-option-emoji">💜</span> Lila lavanda
+      </div>
+      <div class="s-option">
+        <span class="s-option-emoji">💗</span> Rosa pastel
+      </div>
+      <div class="s-option">
+        <span class="s-option-emoji">🖤</span> Negro elegante
+      </div>
+      <div class="s-option">
+        <span class="s-option-emoji">🤍</span> Blanco puro
+      </div>
+      <span class="s-hint">Votá en los comentarios</span>
+    </div>
+    <p class="template-use">Para generar interacción y que tu audiencia participe</p>
+  </div>
+
+  <!-- Template 5: Proceso -->
+  <div class="template-wrapper">
+    <span class="template-label">Behind the scenes</span>
+    <div class="story story-5">
+      <div class="s-header">
+        <p class="s-tag">Detrás de escena</p>
+        <h2>Así nace tu kit</h2>
+      </div>
+      <div class="s-placeholder">
+        <span>Tu foto o video acá</span>
+      </div>
+      <div class="s-steps">
+        <div class="s-step">
+          <span class="s-step-num">1</span>
+          <span>Elijo la tela perfecta</span>
+        </div>
+        <div class="s-step">
+          <span class="s-step-num">2</span>
+          <span>Corto cada pieza a mano</span>
+        </div>
+        <div class="s-step">
+          <span class="s-step-num">3</span>
+          <span>Coso con amor y detalle</span>
+        </div>
+      </div>
+    </div>
+    <p class="template-use">Para mostrar tu proceso de producción</p>
+  </div>
+
+  <!-- Template 6: Fecha especial -->
+  <div class="template-wrapper">
+    <span class="template-label">Fecha especial</span>
+    <div class="story story-6">
+      <span class="s-date">8 de Marzo</span>
+      <span class="s-emoji">🌸</span>
+      <h2>Regalale algo <em>especial</em></h2>
+      <p class="s-desc">Kits pensados para ella, hechos con amor artesanal</p>
+      <div class="s-gift-list">
+        <div class="s-gift"><span class="s-gift-dot"></span> Kit Beauty — $7.000</div>
+        <div class="s-gift"><span class="s-gift-dot"></span> Kit de Dormir — consultá</div>
+        <div class="s-gift"><span class="s-gift-dot"></span> Set Spa — consultá</div>
+        <div class="s-gift"><span class="s-gift-dot"></span> Combos con descuento</div>
+      </div>
+      <span class="s-cta">Hacé tu pedido</span>
+    </div>
+    <p class="template-use">Para campañas de fechas especiales (8M, Día de la Madre, etc.)</p>
+  </div>
+
+</div>
+
+<div class="instructions">
+  <h2>¿Cómo usar estas plantillas?</h2>
+  <p><strong>Opción 1 — Captura de pantalla:</strong> Hacé zoom en la plantilla que te guste desde el celular, capturá la pantalla y recortá. Subila directo como story y agregale stickers o texto en Instagram.</p>
+  <p><strong>Opción 2 — Recrear en CapCut o Canva:</strong> Usá estas plantillas como guía de diseño. Copiá los colores, tipografías y estructura en Canva (gratis) y reemplazá con tus fotos reales.</p>
+  <p><strong>Colores de tu marca:</strong> Crema #faf6f2 · Rosa cálido #c4a082 · Marrón #8b6f5a · Carbón #2d2926 · Sage #a8b5a0</p>
+  <p><strong>Tip:</strong> Mantené siempre los mismos colores y tipografías para que tu marca se vea profesional y consistente.</p>
+</div>
+
+</body>
+</html>
