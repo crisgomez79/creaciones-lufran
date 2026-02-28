@@ -166,102 +166,74 @@ Los botones envían un mensaje automático. El texto está codificado en la URL 
 
 ## Despliegue en GitHub Pages
 
-### Requisitos
+### Tu página está publicada en:
+```
+https://crisgomez79.github.io/creaciones-lufran/
+```
 
-- Una cuenta en [github.com](https://github.com) (gratis)
+### Cómo se subió (pasos ya realizados)
 
-### Pasos
-
-1. **Renombrá** el archivo `landing-creaciones-lufran.html` a `index.html`
-
-2. **Creá un repositorio nuevo** en GitHub:
-   - Hacé clic en `+` → `New repository`
-   - Nombre: `tunombredeusuario.github.io` (reemplazá con tu usuario real de GitHub)
-   - Dejá marcado **Public**
-   - Click en `Create repository`
-
-3. **Subí el archivo**:
-   - En la página del repositorio, hacé clic en `Add file` → `Upload files`
-   - Arrastrá `index.html` a la pantalla
-   - Hacé clic en `Commit changes`
-
-4. **Activá GitHub Pages**:
-   - Andá a `Settings` → `Pages` (menú lateral izquierdo)
-   - En **Source** elegí `Deploy from a branch`
-   - En **Branch** elegí `main` y `/ (root)`
-   - Click en `Save`
-
-5. **Esperá 2-3 minutos** y tu página estará en:
+1. Se creó un repositorio en GitHub llamado `creaciones-lufran` en la cuenta `crisgomez79`
+2. Se subieron todos los archivos con Git desde la terminal:
+   ```bash
+   git init
+   git add .
+   git commit -m "Landing page Creaciones LuFran"
+   git branch -M main
+   git remote add origin https://github.com/crisgomez79/creaciones-lufran.git
+   git push -u origin main
    ```
-   https://tunombredeusuario.github.io
-   ```
+3. Se activó GitHub Pages en `Settings` → `Pages` → Source: `Deploy from a branch` → Branch: `main` / `(root)`
 
-### Actualizar la página después
+### Cómo actualizar la página cuando hagas cambios
 
-Opción A — Desde la web de GitHub:
-1. Entrá al repositorio
-2. Hacé clic en `index.html`
-3. Hacé clic en el ícono de lápiz (editar)
-4. Hacé los cambios
-5. Click en `Commit changes`
-6. En 1-2 minutos se actualiza la página
+Si modificás el archivo `index.html` (cambiar precios, textos, imágenes, etc.), ejecutá estos 3 comandos en la terminal desde la carpeta del proyecto:
 
-Opción B — Desde VS Code con Git:
 ```bash
-# Solo la primera vez: cloná el repositorio
-git clone https://github.com/tunombredeusuario/tunombredeusuario.github.io.git
-cd tunombredeusuario.github.io
-
-# Cada vez que hagas cambios:
 git add .
-git commit -m "Actualizo precios"
+git commit -m "Descripción de lo que cambiaste"
 git push
 ```
 
-### Dominio personalizado (opcional, gratis)
+**Ejemplo práctico:** cambiaste el precio del Kit Beauty:
 
-Si querés que la URL sea `creacioneslufran.com` en lugar de `tunombredeusuario.github.io`:
+```bash
+git add .
+git commit -m "Actualizo precio Kit Beauty"
+git push
+```
+
+Esperá 1-2 minutos y los cambios se van a ver en la página.
+
+### Si agregás imágenes nuevas
+
+1. Poné la imagen nueva en la carpeta `img/`
+2. Referenciala en el HTML: `<img src="img/nombre_imagen.png">`
+3. Subí los cambios:
+   ```bash
+   git add .
+   git commit -m "Agrego imagen nueva"
+   git push
+   ```
+
+### Dominio personalizado (opcional)
+
+Si querés que la URL sea `creacioneslufran.com` en lugar de `crisgomez79.github.io/creaciones-lufran`:
 1. Comprá el dominio (ej: en Nic.ar cuesta ~$2.500/año para `.com.ar`)
 2. En GitHub: `Settings` → `Pages` → `Custom domain` → escribí tu dominio
-3. En tu proveedor de dominio: agregá un registro CNAME apuntando a `tunombredeusuario.github.io`
+3. En tu proveedor de dominio: agregá un registro CNAME apuntando a `crisgomez79.github.io`
 
 ---
 
-## Despliegue en Netlify (alternativa)
+## Resumen rápido: hice cambios, y ahora qué?
 
-### Requisitos
+```bash
+git add .
+git commit -m "Lo que cambiaste"
+git push
+```
 
-- Una cuenta en [netlify.com](https://netlify.com) (gratis, podés registrarte con Google)
-
-### Método rápido (sin Git)
-
-1. **Renombrá** `landing-creaciones-lufran.html` a `index.html`
-2. Creá una carpeta en tu computadora (ej: `lufran-web`) y metí `index.html` adentro
-3. Entrá a [app.netlify.com](https://app.netlify.com)
-4. Arrastrá la carpeta completa al recuadro que dice **"Drag and drop your site output folder here"**
-5. Listo. Netlify te da una URL tipo `random-name-123.netlify.app`
-
-### Cambiar el nombre del sitio
-
-1. En Netlify, andá a `Site configuration` → `Change site name`
-2. Escribí el nombre que quieras (ej: `creacioneslufran`)
-3. Tu URL queda: `creacioneslufran.netlify.app`
-
-### Actualizar la página después
-
-1. Entrá a tu sitio en Netlify
-2. Andá a `Deploys`
-3. Arrastrá de nuevo la carpeta con el archivo actualizado
-4. Se actualiza en segundos
-
-### Método con Git (para actualizaciones automáticas)
-
-Si conectás Netlify con tu repositorio de GitHub, cada vez que hagas un push se actualiza sola:
-
-1. En Netlify: `Add new site` → `Import an existing project` → `GitHub`
-2. Elegí tu repositorio
-3. Click en `Deploy`
-4. Desde ahora, cada `git push` actualiza la web automáticamente
+Esperá 1-2 minutos. Listo.
 
 ---
 

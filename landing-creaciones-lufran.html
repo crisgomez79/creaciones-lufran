@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creaciones LuFran — Kits Beauty Artesanales</title>
+<meta name="description" content="Kits beauty artesanales hechos a mano en Mendoza. Almohadillas reutilizables, kits de dormir en satén, sets spa y más.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #c4a082;
+    --rose-light: #e8d5c4;
+    --rose-pale: #faf6f2;
+    --rose-deep: #8b6f5a;
+    --charcoal: #2d2926;
+    --warm-gray: #6b6462;
+    --light-gray: #f7f5f3;
+    --cream: #fffcf9;
+    --white: #ffffff;
+    --sage: #a8b5a0;
+    --sage-light: #e8ede5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--charcoal);
+    background: var(--cream);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes expandLine {
+    from { width: 0; }
+    to { width: 60px; }
+  }
+
+  .animate { opacity: 0; }
+  .animate.visible { animation: fadeUp 0.8s ease forwards; }
+  .animate-delay-1 { animation-delay: 0.15s; }
+  .animate-delay-2 { animation-delay: 0.3s; }
+  .animate-delay-3 { animation-delay: 0.45s; }
+  .animate-delay-4 { animation-delay: 0.6s; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.2rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(255, 252, 249, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(196, 160, 130, 0.1);
+    transition: all 0.4s ease;
+  }
+
+  nav.scrolled {
+    padding: 0.8rem 2rem;
+    box-shadow: 0 2px 30px rgba(45, 41, 38, 0.06);
+  }
+
+  .nav-logo img {
+    transition: height 0.4s ease;
+  }
+
+  nav.scrolled .nav-logo img {
+    height: 60px !important;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--warm-gray);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--rose);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover { color: var(--charcoal); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-wa {
+    background: var(--charcoal) !important;
+    color: var(--white) !important;
+    padding: 0.6rem 1.4rem;
+    border-radius: 50px;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.06em !important;
+    transition: all 0.3s !important;
+  }
+
+  .nav-wa:hover { background: var(--rose-deep) !important; transform: scale(1.03); }
+  .nav-wa::after { display: none !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    padding: 8rem 2rem 4rem;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: -30%; right: -20%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, var(--rose-light) 0%, transparent 70%);
+    opacity: 0.4;
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -20%; left: -15%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, var(--sage-light) 0%, transparent 70%);
+    opacity: 0.3;
+    animation: float 10s ease-in-out infinite reverse;
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 800px;
+    position: relative; z-index: 1;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 2rem;
+    animation: fadeIn 1s ease 0.2s both;
+  }
+
+  .hero-tag::before, .hero-tag::after {
+    content: '—';
+    margin: 0 0.8rem;
+    color: var(--rose-light);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    color: var(--warm-gray);
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    animation: fadeUp 1s ease 0.6s both;
+  }
+
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    background: var(--charcoal);
+    color: var(--white);
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+    animation: fadeUp 1s ease 0.8s both;
+  }
+
+  .hero-cta:hover {
+    background: var(--rose-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(139, 111, 90, 0.25);
+  }
+
+  .hero-cta svg { width: 18px; height: 18px; }
+
+  .scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    animation: fadeIn 1s ease 1.2s both;
+  }
+
+  .scroll-hint span {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rose-light);
+  }
+
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--rose), transparent);
+    animation: float 2s ease-in-out infinite;
+  }
+
+  /* ─── SECTION STYLING ─── */
+  section { padding: 6rem 2rem; }
+
+  .section-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--warm-gray);
+    max-width: 500px;
+  }
+
+  /* ─── ABOUT ─── */
+  .about {
+    background: var(--white);
+    border-top: 1px solid rgba(196, 160, 130, 0.1);
+    border-bottom: 1px solid rgba(196, 160, 130, 0.1);
+  }
+
+  .about-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+    height: 400px;
+    background: var(--rose-pale);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .about-visual-inner {
+    text-align: center;
+    padding: 3rem;
+  }
+
+  .about-visual-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .about-visual-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--rose-deep);
+    line-height: 1.5;
+  }
+
+  .about-values {
+    display: flex; flex-direction: column; gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .about-value {
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+
+  .about-value-dot {
+    width: 8px; height: 8px;
+    min-width: 8px;
+    background: var(--rose);
+    border-radius: 50%;
+    margin-top: 0.5rem;
+  }
+
+  .about-value h4 {
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+  }
+
+  .about-value p {
+    font-size: 0.88rem;
+    color: var(--warm-gray);
+  }
+
+  /* ─── PRODUCTS ─── */
+  .products { max-width: 1200px; margin: 0 auto; }
+
+  .products-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .products-header .section-sub {
+    margin: 0 auto;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+  }
+
+  .product-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(196, 160, 130, 0.12);
+    transition: all 0.4s ease;
+    position: relative;
+  }
+
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(45, 41, 38, 0.08);
+    border-color: var(--rose-light);
+  }
+
+  .product-img {
+    height: 240px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-img-bg {
+    position: absolute; inset: 0;
+    transition: transform 0.6s ease;
+  }
+
+  .product-card:hover .product-img-bg { transform: scale(1.05); }
+
+  .product-emoji {
+    font-size: 4rem;
+    position: relative; z-index: 1;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08));
+  }
+
+  .product-info { padding: 1.8rem; }
+
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+
+  .product-desc {
+    font-size: 0.85rem;
+    color: var(--warm-gray);
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+  }
+
+  .product-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .product-price {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--charcoal);
+  }
+
+  .product-price small {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--warm-gray);
+    display: block;
+  }
+
+  .product-btn {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--rose-pale);
+    color: var(--rose-deep);
+    text-decoration: none;
+    padding: 0.55rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: all 0.3s;
+  }
+
+  .product-btn:hover {
+    background: var(--rose);
+    color: var(--white);
+  }
+
+  .product-tag {
+    position: absolute; top: 1rem; left: 1rem;
+    background: var(--charcoal);
+    color: var(--white);
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  /* ─── BENEFITS ─── */
+  .benefits {
+    background: var(--charcoal);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .benefits::before {
+    content: '';
+    position: absolute; top: -50%; right: -30%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(196, 160, 130, 0.08) 0%, transparent 70%);
+  }
+
+  .benefits-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative; z-index: 1;
+  }
+
+  .benefits-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .benefits-header .section-title { color: var(--white); }
+  .benefits-header .section-sub { color: rgba(255,255,255,0.5); margin: 0 auto; }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  .benefit {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    transition: all 0.4s;
+  }
+
+  .benefit:hover {
+    border-color: rgba(196, 160, 130, 0.3);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .benefit-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .benefit h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 0.6rem;
+  }
+
+  .benefit p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  /* ─── PROCESS ─── */
+  .process { max-width: 900px; margin: 0 auto; }
+
+  .process-header { text-align: center; margin-bottom: 4rem; }
+  .process-header .section-sub { margin: 0 auto; }
+
+  .process-steps { position: relative; }
+
+  .process-line {
+    position: absolute; left: 24px; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--rose-light), transparent);
+  }
+
+  .process-step {
+    display: flex; gap: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+
+  .process-num {
+    width: 48px; height: 48px;
+    min-width: 48px;
+    background: var(--rose-pale);
+    border: 2px solid var(--rose-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--rose-deep);
+    position: relative; z-index: 1;
+    transition: all 0.3s;
+  }
+
+  .process-step:hover .process-num {
+    background: var(--rose);
+    color: var(--white);
+    border-color: var(--rose);
+  }
+
+  .process-text h3 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+
+  .process-text p {
+    font-size: 0.9rem;
+    color: var(--warm-gray);
+  }
+
+  /* ─── CTA ─── */
+  .cta {
+    background: linear-gradient(135deg, var(--rose-pale) 0%, var(--sage-light) 100%);
+    text-align: center;
+    padding: 6rem 2rem;
+  }
+
+  .cta-inner { max-width: 600px; margin: 0 auto; }
+
+  .cta .section-title { margin-bottom: 1rem; }
+
+  .cta p {
+    color: var(--warm-gray);
+    margin-bottom: 2.5rem;
+    font-size: 1.05rem;
+  }
+
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    background: #25D366;
+    color: var(--white);
+    text-decoration: none;
+    padding: 1.1rem 2.8rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.25);
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.35);
+  }
+
+  .cta-btn svg { width: 20px; height: 20px; }
+
+  .cta-phone {
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    color: var(--warm-gray);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 3rem 2rem;
+    font-size: 0.8rem;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  footer a {
+    color: var(--rose-light);
+    text-decoration: none;
+  }
+
+  .footer-social {
+    display: flex; justify-content: center; gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .footer-social a {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 1.1rem;
+  }
+
+  .footer-social a:hover {
+    border-color: var(--rose);
+    background: rgba(196, 160, 130, 0.1);
+  }
+
+  /* ─── MOBILE NAV ─── */
+  .nav-toggle { display: none; cursor: pointer; padding: 0.5rem; }
+  .nav-toggle span {
+    display: block; width: 22px; height: 1.5px;
+    background: var(--charcoal);
+    margin: 5px 0;
+    transition: all 0.3s;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: rgba(255,252,249,0.98);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      padding: 1.5rem 2rem;
+      gap: 1.2rem;
+      border-bottom: 1px solid rgba(196,160,130,0.1);
+    }
+    .nav-links.open { display: flex; }
+    .nav-toggle { display: block; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-visual { height: 260px; }
+    .benefits-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .products-grid { grid-template-columns: 1fr; }
+    .process-step { gap: 1.5rem; }
+
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 2.5rem; }
+    .product-img { height: 200px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo"><img src="img/logo_lufran.png" alt="Creaciones LuFran" style="height: 100px;"></a>
+  <div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="nav-links">
+    <a href="#productos">Productos</a>
+    <a href="#proceso">Cómo comprar</a>
+    <a href="#nosotras">Nosotras</a>
+    <a href="https://wa.me/5492614174684?text=Hola!%20Vi%20tu%20página%20y%20quiero%20consultar%20por%20un%20kit%20🌸" target="_blank" class="nav-wa">WhatsApp</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-tag">Hecho a mano en Mendoza</span>
+    <h1>Cuidado personal con <em>amor artesanal</em></h1>
+    <p>Kits beauty reutilizables, sustentables y hermosos. Cada pieza está cosida a mano para vos o para regalar.</p>
+    <a href="https://wa.me/5492614174684?text=Hola!%20Vi%20tu%20página%20y%20quiero%20consultar%20por%20un%20kit%20🌸" target="_blank" class="hero-cta">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Hacé tu pedido
+    </a>
+  </div>
+  <div class="scroll-hint">
+    <span>Descubrí más</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="productos">
+  <div class="products">
+    <div class="products-header">
+      <span class="section-tag animate">Nuestros productos</span>
+      <h2 class="section-title animate animate-delay-1">Elegí tu kit favorito</h2>
+      <p class="section-sub animate animate-delay-2">Cada pieza se hace a pedido. Elegís el color y estampado que más te guste.</p>
+    </div>
+
+    <div class="products-grid">
+      <!-- Kit Beauty -->
+      <div class="product-card animate">
+        <div class="product-img">
+          <div class="product-img-bg" style="background: linear-gradient(135deg, #fde8ef 0%, #f5d5e0 100%);"></div>
+          <span class="product-tag">Más vendido</span>
+          <img src="img/kit_beauty.png" alt="Kit Beauty" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 1;">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Kit Beauty</h3>
+          <p class="product-desc">Almohadillas desmaquillantes reutilizables + vincha + bolsita de tela. Cuidá tu piel y el planeta.</p>
+          <div class="product-bottom">
+            <span class="product-price">$7.000 <small>Unidad</small></span>
+            <a href="https://wa.me/5492614174684?text=Hola!%20Quiero%20el%20Kit%20Beauty%20🌸" target="_blank" class="product-btn">Pedir →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kit Dormir -->
+      <div class="product-card animate animate-delay-1">
+        <div class="product-img">
+          <div class="product-img-bg" style="background: linear-gradient(135deg, #e8dff0 0%, #d5c8e6 100%);"></div>
+          <img src="img/kit_de_dormir.png" alt="Kit de Dormir" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 1;">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Kit de Dormir</h3>
+          <p class="product-desc">Gorro + antifaz + scrunchies + bolsita. Todo en satén premium para despertar radiante.</p>
+          <div class="product-bottom">
+            <span class="product-price">Consultá <small>Por WhatsApp</small></span>
+            <a href="https://wa.me/5492614174684?text=Hola!%20Quiero%20saber%20el%20precio%20del%20Kit%20de%20Dormir%20🌙" target="_blank" class="product-btn">Consultar →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Set Spa -->
+      <div class="product-card animate animate-delay-2">
+        <div class="product-img">
+          <div class="product-img-bg" style="background: linear-gradient(135deg, #e3ede8 0%, #d0e0d7 100%);"></div>
+          <img src="img/kit_de_baño.png" alt="Set Spa / Toalla" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 1;">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Set Spa / Toalla</h3>
+          <p class="product-desc">Set completo con vincha, Almohadillas y toalla. Ideal para tu rutina de cuidado facial.</p>
+          <div class="product-bottom">
+            <span class="product-price">Consultá <small>Por WhatsApp</small></span>
+            <a href="https://wa.me/5492614174684?text=Hola!%20Quiero%20saber%20el%20precio%20del%20Set%20Spa%20🧖‍♀️" target="_blank" class="product-btn">Consultar →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Funda Almohada -->
+      <div class="product-card animate animate-delay-3">
+        <div class="product-img">
+          <div class="product-img-bg" style="background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);"></div>
+          <img src="img/funda_almohada.png" alt="Funda de Almohada" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 1;">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Funda de Almohada</h3>
+          <p class="product-desc">Funda de satén premium. Reduce el frizz, cuida tu piel y mantiene tu pelo perfecto.</p>
+          <div class="product-bottom">
+            <span class="product-price">Consultá <small>Por WhatsApp</small></span>
+            <a href="https://wa.me/5492614174684?text=Hola!%20Quiero%20saber%20el%20precio%20de%20la%20Funda%20de%20Almohada%20💗" target="_blank" class="product-btn">Consultar →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <div class="benefits-inner">
+    <div class="benefits-header">
+      <span class="section-tag animate">¿Por qué elegirnos?</span>
+      <h2 class="section-title animate animate-delay-1">Belleza consciente</h2>
+      <p class="section-sub animate animate-delay-2">Cada kit es una decisión que cuida de vos y del planeta</p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit animate">
+        <span class="benefit-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#7bc47f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c-4-3-8-6-8-11a8 8 0 0 1 16 0c0 5-4 8-8 11z"/><path d="M12 11V6"/><path d="M9 8l3-3 3 3"/></svg></span>
+        <h3>Sustentable</h3>
+        <p>Almohadillas reutilizables que reemplazan más de 1.000 algodones descartables al año. Tu piel y el planeta te lo agradecen.</p>
+      </div>
+      <div class="benefit animate animate-delay-1">
+        <span class="benefit-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></span>
+        <h3>100% Artesanal</h3>
+        <p>Cada pieza está cortada y cosida a mano por Lu en Mendoza. No es producción en serie, es amor en cada puntada.</p>
+      </div>
+      <div class="benefit animate animate-delay-2">
+        <span class="benefit-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#f2a7b0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13"/><path d="M3 12h18"/><path d="M12 8c-2-3-6-3-6 0s4 0 6 0c2-3 6-3 6 0s-4 0-6 0"/></svg></span>
+        <h3>Regalo perfecto</h3>
+        <p>Viene en bolsita de tela lista para regalar. Podemos agregarle tarjeta con mensaje personalizado sin costo extra.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="nosotras">
+  <div class="about-grid">
+    <div class="about-visual animate" style="background: url('img/logo_fondo.png') center/cover no-repeat;">
+      <div class="about-visual-inner" style="background: none; display: flex; align-items: flex-end; justify-content: center; height: 100%; padding-bottom: 0.5rem;">
+<p class="about-visual-text" style="color: #301602; font-weight: 600;">"Cada kit lleva horas de trabajo, pero lo que más lleva es cariño"</p>
+      </div>
+    </div>
+    <div>
+      <span class="section-tag animate">Nuestra historia</span>
+      <h2 class="section-title animate animate-delay-1">Creaciones LuFran</h2>
+      <p class="section-sub animate animate-delay-2">Nació de la pasión por crear cosas hermosas y útiles con las manos. Cada kit está pensado para que tu rutina de cuidado personal sea un momento especial.</p>
+      <div class="about-values">
+        <div class="about-value animate animate-delay-2">
+          <div class="about-value-dot"></div>
+          <div>
+            <h4>Hecho en Mendoza</h4>
+            <p>Producción local, materiales de calidad, envíos a todo el país.</p>
+          </div>
+        </div>
+        <div class="about-value animate animate-delay-3">
+          <div class="about-value-dot"></div>
+          <div>
+            <h4>A tu medida</h4>
+            <p>Elegís el color, estampado y combinación que más te guste.</p>
+          </div>
+        </div>
+        <div class="about-value animate animate-delay-4">
+          <div class="about-value-dot"></div>
+          <div>
+            <h4>Con propósito</h4>
+            <p>Productos reutilizables que reducen residuos sin sacrificar belleza.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="proceso">
+  <div class="process">
+    <div class="process-header">
+      <span class="section-tag animate">Súper fácil</span>
+      <h2 class="section-title animate animate-delay-1">¿Cómo comprar?</h2>
+      <p class="section-sub animate animate-delay-2">En 4 pasos tenés tu kit en las manos</p>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-line"></div>
+
+      <div class="process-step animate">
+        <div class="process-num">1</div>
+        <div class="process-text">
+          <h3>Escribinos por WhatsApp</h3>
+          <p>Contanos qué kit te interesa o para quién es el regalo. Te asesoramos en todo.</p>
+        </div>
+      </div>
+
+      <div class="process-step animate animate-delay-1">
+        <div class="process-num">2</div>
+        <div class="process-text">
+          <h3>Elegí tu diseño</h3>
+          <p>Te mostramos las telas disponibles y armamos tu kit personalizado en el color que más te guste.</p>
+        </div>
+      </div>
+
+      <div class="process-step animate animate-delay-2">
+        <div class="process-num">3</div>
+        <div class="process-text">
+          <h3>Confirmá con una seña</h3>
+          <p>Reservá tu kit con el 50% por transferencia o Mercado Pago. El resto al recibir.</p>
+        </div>
+      </div>
+
+      <div class="process-step animate animate-delay-3">
+        <div class="process-num">4</div>
+        <div class="process-text">
+          <h3>Recibilo en tu casa</h3>
+          <p>En 3-5 días hábiles lo tenés listo. Envíos a todo el país o retiro gratis en Mendoza.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-inner">
+    <span class="section-tag animate">¿Lista?</span>
+    <h2 class="section-title animate animate-delay-1">Tu kit te está esperando</h2>
+    <p class="animate animate-delay-2">Escribinos y te ayudamos a elegir el kit perfecto para vos o para regalar. Respondemos en minutos.</p>
+    <a href="https://wa.me/5492614174684?text=Hola!%20Vi%20tu%20página%20y%20quiero%20consultar%20por%20un%20kit%20🌸" target="_blank" class="cta-btn animate animate-delay-3">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Escribinos por WhatsApp
+    </a>
+    <p class="cta-phone">o llamanos al <a href="tel:+5492614174684">261 417 4684</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Creaciones LuFran</div>
+  <p>Kits beauty artesanales — Mendoza, Argentina</p>
+  <div class="footer-social">
+    <a href="https://wa.me/5492614174684" target="_blank" title="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="#e8d5c4"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+    <a href="#" title="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="#e8d5c4"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+    <a href="#" title="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="#e8d5c4"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13.2a8.16 8.16 0 005.58 2.17v-3.44a4.85 4.85 0 01-3.77-1.47V6.69h3.77z"/></svg></a>
+    <a href="#" title="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="#e8d5c4"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+  </div>
+  <p>&copy; 2026 Creaciones LuFran. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+// Nav scroll effect
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.querySelector('.nav-links').classList.remove('open');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
